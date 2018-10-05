@@ -71,10 +71,23 @@ public class PilotController {
         return "delete";
     }
     
+//    @RequestMapping (value = "/pilot/update/{licenseNumber}", method = RequestMethod.GET)
+//    private String updatePilot (@PathVariable (value="licenseNumber") String licenseNumber, Model model) {
+//        PilotModel pilotupdate = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
+//        model.addAttribute("pilotupdate", pilotupdate);
+//        return "update-pilot";
+//    }
+//
+//    @RequestMapping (value = "/pilot/update", method = RequestMethod.POST)
+//    private String updatePilotSubmit (@ModelAttribute PilotModel pilot) {
+//        pilotService.updatePilot(pilot, pilot.getLicenseNumber());
+//        return "update";
+//    }
+    
     @RequestMapping (value = "/pilot/update/{licenseNumber}", method = RequestMethod.GET)
-    private String updatePilot (@PathVariable (value="licenseNumber") String licenseNumber, Model model) {
-        PilotModel pilotupdate = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
-        model.addAttribute("pilotupdate", pilotupdate);
+    private String updatePilot (@PathVariable ("licenseNumber") String licenseNumber, Model model) {
+        PilotModel pilotnow = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
+        model.addAttribute("pilotnow", pilotnow);
         return "update-pilot";
     }
 
@@ -83,4 +96,5 @@ public class PilotController {
         pilotService.updatePilot(pilot, pilot.getLicenseNumber());
         return "update";
     }
+
 }

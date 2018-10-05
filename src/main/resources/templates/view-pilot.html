@@ -17,7 +17,7 @@
 	    	<h4 th:text="'Flight Number: ' + ${flight.flightNumber}"></h4>
 	        <p th:text="${flight.origin}+' - '+${flight.destination}"></p> <hr>
     		<td><a th:href="@{'/flight/delete/' +${flight.id}}">Delete Flight</a></td>
-    	
+    		<td><a th:href="@{'/flight/update/' +${flight.id}}">Update Flight</a></td>
     	</div>
 	</body>
 </html>

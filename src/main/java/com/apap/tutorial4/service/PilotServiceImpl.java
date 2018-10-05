@@ -31,10 +31,10 @@ public class PilotServiceImpl implements PilotService{
 
 	@Override
 	public void updatePilot(PilotModel pilot, String licenseNumber) {
-		 PilotModel updatedPilot = pilotDb.findByLicenseNumber(licenseNumber);
-	     updatedPilot.setName(pilot.getName());
-	     updatedPilot.setFlyHour(pilot.getFlyHour());
-	     pilotDb.save(updatedPilot);
+	    PilotModel updatedPilot = pilotDb.findByLicenseNumber(licenseNumber);
+	    updatedPilot.setName(pilot.getName());
+	    updatedPilot.setFlyHour(pilot.getFlyHour());
+	    pilotDb.save(updatedPilot);
 	}
 
 }

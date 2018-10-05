@@ -1,5 +1,7 @@
 package com.apap.tutorial4.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,10 +40,29 @@ public class FlightController {
 	}
 	
 	 @RequestMapping(value = "/flight/delete/{id}", method = RequestMethod.GET)
-	    private String deleteFlight(@PathVariable(value = "id") String id){
-	       
-	        flightService.deleteFlight(Long.parseLong(id));
-	        return "delete";
-	    }
+    private String deleteFlight(@PathVariable(value = "id") String id){
+       
+        flightService.deleteFlight(Long.parseLong(id));
+        return "delete";
+    }
 	
+	 @RequestMapping (value = "/flight/update/{id}", method = RequestMethod.GET)
+    private String updateFlight (@PathVariable ("id") String id, Model model) {
+        FlightModel flightNow = flightService.getFlightDetailById(id);
+        model.addAttribute("flightNow", flightNow);
+        return "update-flight";
+    }
+
+	@RequestMapping (value = "/flight/update", method = RequestMethod.POST)
+    private String updateFlightSubmit (@ModelAttribute FlightModel flight) {
+        flightService.updateFlight(flight, flight.getId());
+        return "update";
+    }
+	
+    @RequestMapping("/flight/view")
+    public String view(Model model){
+        List<FlightModel> allFlights = flightService.getAllFlights();
+        model.addAttribute("flights", allFlights);
+        return "view-flight";
+    }
 }
