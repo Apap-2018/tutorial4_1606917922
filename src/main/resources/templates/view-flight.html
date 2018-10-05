@@ -6,14 +6,13 @@
 </head>
 <body>
 
-<h3>List of Flights:</h3>
-<br>
+<h3>List of Flights</h3>
+<hr>
 
 <div th:each="flight : ${flights}">
-    <p th:text="'Flight: '+${flight.getOrigin()}+' - '+${flight.getDestination()}"></p>
+    <h3 th:text="'Flight: '+${flight.getOrigin()}+' - '+${flight.getDestination()}"></h3>
     <p th:text="'Pilot Name: '+${flight.getPilot().getName()}"></p>
     <p th:text="'Pilot License Number: '+${flight.getPilot().getLicenseNumber()}"></p>
-    <td><a th:href="@{'/flight/update/'+${flight.getFlightNumber()}}">Update Flight</a> </td>
 </div>
 
 </body>

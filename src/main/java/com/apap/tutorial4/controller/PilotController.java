@@ -50,19 +50,6 @@ public class PilotController {
 		}
 	}
 	
-//	@RequestMapping("/pilot/view/{licenseNumber}")
-//	public String viewPath(@PathVariable String licenseNumber, Model model) {
-//		PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
-//		if (pilot == null) {
-//			model.addAttribute("error","License Number "+licenseNumber+" tidak ditemukan.");
-//			return "error";
-//		}
-//		else {
-//			model.addAttribute("pilot", pilot);
-//			return "view-pilot";
-//		}
-//	}
-	
 
     @RequestMapping(value = "/pilot/delete/{licenseNumber}", method = RequestMethod.GET)
     private String deletePilot(@PathVariable(value = "licenseNumber") String licenseNumber){
@@ -71,18 +58,6 @@ public class PilotController {
         return "delete";
     }
     
-//    @RequestMapping (value = "/pilot/update/{licenseNumber}", method = RequestMethod.GET)
-//    private String updatePilot (@PathVariable (value="licenseNumber") String licenseNumber, Model model) {
-//        PilotModel pilotupdate = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
-//        model.addAttribute("pilotupdate", pilotupdate);
-//        return "update-pilot";
-//    }
-//
-//    @RequestMapping (value = "/pilot/update", method = RequestMethod.POST)
-//    private String updatePilotSubmit (@ModelAttribute PilotModel pilot) {
-//        pilotService.updatePilot(pilot, pilot.getLicenseNumber());
-//        return "update";
-//    }
     
     @RequestMapping (value = "/pilot/update/{licenseNumber}", method = RequestMethod.GET)
     private String updatePilot (@PathVariable ("licenseNumber") String licenseNumber, Model model) {
